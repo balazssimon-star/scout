@@ -46,6 +46,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
+      # --- DEBUGGING STEP ---
+      # List all files recursively to find where ema_scout.py is located.
+      - name: List files in the repository
+        run: ls -R
+
       # Step 4: Run the actual scout script
       - name: Run the EMA Scout script
         run: python ema_scout.py
@@ -58,3 +63,4 @@ jobs:
           git add document_log.json
           git diff-index --quiet HEAD || git commit -m "Update EMA document log"
           git push
+
