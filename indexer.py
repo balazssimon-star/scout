@@ -113,21 +113,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
 
-### **Your Next Steps**
-
-1.  **Save the File:** Save the code above as `indexer.py` in the same main (`root`) directory of your repository as `ema_scout.py`.
-
-2.  **Install the New Libraries:** This script requires powerful new tools. Open your terminal or command prompt and run these commands:
-    ```bash
-    pip install sentence-transformers
-    pip install faiss-cpu
-    pip install PyMuPDF
-    ```
-    *(Note: We use `faiss-cpu` because it's easier to install than the GPU version).*
-
-3.  **Run the Indexer:** From your terminal, in your repository's directory, run the script:
-    ```bash
-    python indexer.py
-    
