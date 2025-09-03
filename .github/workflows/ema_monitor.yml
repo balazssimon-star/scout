@@ -13,19 +13,20 @@ name: EMA eSubmission Monitor
 
 # Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-  # Runs on a schedule (uses UTC time)
-  # This is set to run at 8:00 AM UTC every day.
   schedule:
     - cron: '0 8 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   run-scout:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    # --- FIX ---
+    # Grant the workflow permission to write to the repository's contents.
+    # This is required for the step that commits the log file back.
+    permissions:
+      contents: write
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -52,18 +53,8 @@ jobs:
       # Step 5: Check for changes in the log file and commit them
       - name: Commit and push if log file changed
         run: |
-          # Configure git with a bot user
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "github-actions-bot@users.noreply.github.com"
-          
-          # Add the log file to the staging area
           git add document_log.json
-          
-          # Commit the file only if there are changes.
-          # The 'git diff-index --quiet' command will exit with an error code (1)
-          # if there are changes, allowing the commit to proceed.
-          # If there are no changes, it exits cleanly (0) and the commit is skipped.
           git diff-index --quiet HEAD || git commit -m "Update EMA document log"
-          
-          # Push the changes back to the repository
           git push
