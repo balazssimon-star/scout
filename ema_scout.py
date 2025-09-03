@@ -1,12 +1,10 @@
-# RegOps Co-Pilot: Smart Scout v2.0
+# RegOps Co-Pilot: Smart Scout v2.1
 # Purpose: This script monitors the EMA eSubmission portal, detects changes
 #          to PDF documents, archives old versions, and creates a structured
 #          change log.
 #
-# Changes in v2.0:
-# - Uses PyMuPDF (fitz) to read PDF content and generate a hash to detect updates.
-# - Archives old PDF versions into an '_archive' directory.
-# - Creates a 'change_log.json' that records NEW, UPDATED, and REMOVED events.
+# Changes in v2.1:
+# - Fixed a critical typo in the hashing function (sha2sha256 -> sha256).
 
 import requests
 from bs4 import BeautifulSoup
@@ -19,17 +17,16 @@ import fitz # PyMuPDF
 
 # --- CONFIGURATION ---
 BASE_URL = "https://esubmission.ema.europa.eu/"
-# The new log file will track events over time
 LOG_FILE = "change_log.json"
-# The old file is now used as a state tracker for the last known versions
 STATE_FILE = "document_state.json"
-# Directory to store old versions of updated documents
 ARCHIVE_DIR = "_archive"
 # --- END CONFIGURATION ---
 
 def get_pdf_content_hash(pdf_content):
     """Calculates a SHA256 hash for the given PDF content to detect changes."""
-    return hashlib.sha2sha256(pdf_content).hexdigest()
+    # --- FIX ---
+    # Corrected the typo from sha2sha256 to sha256.
+    return hashlib.sha256(pdf_content).hexdigest()
 
 def get_current_documents_state():
     """
@@ -98,13 +95,11 @@ def compare_states(old_state, new_state):
     old_docs = set(old_state.keys())
     new_docs = set(new_state.keys())
     
-    # Ensure the archive directory exists
     os.makedirs(ARCHIVE_DIR, exist_ok=True)
     
     today_str = datetime.datetime.utcnow().strftime('%Y-%m-%d')
     change_events = []
 
-    # Check for NEW documents
     for doc_name in sorted(new_docs - old_docs):
         event = {
             "date": today_str,
@@ -115,7 +110,6 @@ def compare_states(old_state, new_state):
         change_events.append(event)
         print(f"  - DETECTED NEW: {doc_name}")
 
-    # Check for REMOVED documents
     for doc_name in sorted(old_docs - new_docs):
         event = {
             "date": today_str,
@@ -125,14 +119,11 @@ def compare_states(old_state, new_state):
         change_events.append(event)
         print(f"  - DETECTED REMOVED: {doc_name}")
 
-    # Check for UPDATED documents (same name, different content)
     for doc_name in sorted(old_docs.intersection(new_docs)):
         if old_state[doc_name]['hash'] != new_state[doc_name]['hash']:
-            # 1. Archive the OLD version
             archive_filename = f"{today_str}_{doc_name.replace(' ', '_').replace('/', '_')}_old.pdf"
             archive_path = os.path.join(ARCHIVE_DIR, archive_filename)
             
-            # We need to fetch the old content again to archive it
             try:
                 old_pdf_response = requests.get(old_state[doc_name]['url'], timeout=30)
                 if old_pdf_response.ok:
@@ -140,12 +131,11 @@ def compare_states(old_state, new_state):
                         f.write(old_pdf_response.content)
                      print(f"  - ARCHIVED old version of {doc_name} to {archive_path}")
                 else:
-                    archive_path = None # Failed to archive
+                    archive_path = None
             except Exception as e:
                 print(f"  - WARNING: Failed to archive old version of {doc_name}. Reason: {e}")
                 archive_path = None
 
-            # 2. Create the event log
             event = {
                 "date": today_str,
                 "type": "UPDATED",
@@ -159,7 +149,7 @@ def compare_states(old_state, new_state):
     return change_events
 
 def main():
-    print("--- Starting Smart Scout v2.0 ---")
+    print("--- Starting Smart Scout v2.1 ---")
     
     previous_state = read_json_file(STATE_FILE)
     current_state = get_current_documents_state()
@@ -172,12 +162,10 @@ def main():
             print("--> No changes detected.")
         else:
             print(f"\n--> Found {len(events)} new event(s). Appending to change log.")
-            # Append new events to the existing log
             change_log = read_json_file(LOG_FILE)
             change_log.extend(events)
             write_json_file(change_log, LOG_FILE)
         
-        # Save the new state for the next run (without the bulky PDF content)
         state_to_save = {
             name: {"url": data["url"], "hash": data["hash"]}
             for name, data in current_state.items()
