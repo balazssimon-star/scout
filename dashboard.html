@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegOps Co-Pilot v5.2 (CDN Fix)</title>
+    <!-- Import the AI libraries required to run the models in the browser -->
+    <script type="importmap">
+    {
+        "imports": {
+            "@xenova/transformers": "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1/dist/transformers.min.js",
+            "onnxruntime-web": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/ort.min.js",
+            "faiss-wasm": "https://unpkg.com/faiss-wasm@0.2.2/dist/faiss-wasm.es.js"
+        }
+    }
+    </script>
+    <style>
+        /* A more refined and professional styling */
+        :root { --accent-color: #007bff; --bg-color: #f8f9fa; --panel-bg: #ffffff; --border-color: #dee2e6; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; color: #212529; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 1400px; display: flex; flex-direction: column; gap: 20px; }
+        @media (min-width: 1024px) { .container { flex-direction: row; } }
+        .panel { background-color: var(--panel-bg); border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); padding: 25px; border: 1px solid var(--border-color); }
+        .chat-panel { flex: 2; display: flex; flex-direction: column; }
+        .whats-new-panel { flex: 1; max-height: 90vh; overflow-y: auto; }
+        h2 { margin-top: 0; color: #343a40; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+        /* Chat History Styling */
+        #chat-history { flex-grow: 1; overflow-y: auto; padding: 10px; margin-bottom: 15px; border: 1px solid var(--border-color); border-radius: 6px; display: flex; flex-direction: column; }
+        .message { margin-bottom: 15px; padding: 10px 15px; border-radius: 12px; line-height: 1.5; max-width: 85%; }
+        .user-message { background-color: var(--accent-color); color: white; align-self: flex-end; margin-left: auto; }
+        .bot-message { background-color: #e9ecef; color: #343a40; align-self: flex-start; }
+        .bot-message.error { background-color: #f8d7da; color: #721c24; font-weight: bold; }
+        .bot-message .sources { margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px; }
+        .bot-message .source-item { font-size: 0.8rem; color: #6c757d; margin-bottom: 5px; word-wrap: break-word; }
+        /* Chat Input Styling */
+        #chat-input-area { display: flex; gap: 10px; }
+        #chat-input { flex-grow: 1; padding: 12px; border: 1px solid #ccc; border-radius: 6px; }
+        #send-button { background-color: var(--accent-color); color: white; border: none; padding: 0 20px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        #send-button.loading, #send-button:disabled { background-color: #6c757d; cursor: not-allowed; }
+        #status-text { margin-top: 10px; text-align: center; color: #6c757d; font-style: italic; }
+        /* What's New Styling */
+        .alert-card { border-left: 5px solid #ccc; padding: 15px; margin-bottom: 15px; background-color: #fdfdfd; }
+        .alert-card.new { border-color: #28a745; }
+        .alert-card.updated { border-color: #007bff; }
+        .alert-card.removed { border-color: #dc3545; }
+        .alert-card h3 { margin: 0 0 5px 0; font-size: 1rem; }
+        .alert-card p { margin: 0; font-size: 0.85rem; color: #555; }
+        .alert-meta { font-size: 0.75rem; color: #888; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="panel chat-panel">
+        <h2>RegOps Co-Pilot</h2>
+        <div id="chat-history"></div>
+        <div id="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Initializing AI, please wait..." disabled>
+            <button id="send-button" disabled>Send</button>
+        </div>
+        <p id="status-text">Initializing...</p>
+    </div>
+    <div class="panel whats-new-panel">
+        <h2>What's New</h2>
+        <div id="alerts-container">
+             <p>Loading change log...</p>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    // Import the necessary AI libraries
+    import { pipeline, env } from '@xenova/transformers';
+    import { FaissIndex } from 'faiss-wasm';
+
+    env.allowLocalModels = false;
+
+    // --- CONFIGURATION ---
+    const GITHUB_USERNAME = "balazssimon-star";
+    const GITHUB_REPO = "scout";
+    const PRIMARY_BRANCH = "main";
+    const BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/${PRIMARY_BRANCH}/`;
+    const INDEX_URL = BASE_URL + "document_index.faiss";
+    const MAPPING_URL = BASE_URL + "document_mapping.json";
+    const CHANGE_LOG_URL = BASE_URL + "change_log.json";
+    const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=";
+    const API_KEY = ""; // <-- PASTE YOUR API KEY HERE
+    // --- END CONFIGURATION ---
+
+    const statusText = document.getElementById('status-text');
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-button');
+    const chatHistory = document.getElementById('chat-history');
+    const alertsContainer = document.getElementById('alerts-container');
+
+    let extractor, index, mapping;
+
+    async function initializeApp() {
+        if (!API_KEY) {
+            statusText.textContent = "Error: Gemini API key is missing. Please paste it into the dashboard.html file.";
+            return;
+        }
+        await Promise.all([
+            initializeChatbot(),
+            fetchAndDisplayChangeLog()
+        ]);
+    }
+
+    async function initializeChatbot() {
+        try {
+            statusText.textContent = "Step 1/4: Loading embedding model (Transformers.js)...";
+            extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+
+            statusText.textContent = "Step 2/4: Loading search index file (document_index.faiss)...";
+            const indexResponse = await fetch(INDEX_URL);
+            if (!indexResponse.ok) throw new Error(`Could not load index file. Status: ${indexResponse.status}`);
+            const indexData = await indexResponse.arrayBuffer();
+            
+            statusText.textContent = "Step 3/4: Deserializing search index (FAISS)...";
+            index = FaissIndex.deserialize(new Uint8Array(indexData));
+
+            statusText.textContent = "Step 4/4: Loading document map (document_mapping.json)...";
+            const mappingResponse = await fetch(MAPPING_URL);
+            if (!mappingResponse.ok) throw new Error(`Could not load mapping file. Status: ${mappingResponse.status}`);
+            mapping = await mappingResponse.json();
+
+            statusText.textContent = "Ready. Ask a technical question.";
+            sendButton.disabled = false;
+            chatInput.disabled = false;
+            chatInput.placeholder = "Ask about EMA guidelines...";
+        } catch (error) {
+            statusText.textContent = `Chatbot Initialization Error: ${error.message}`;
+            console.error("Initialization failed:", error);
+        }
+    }
+    
+    async function fetchAndDisplayChangeLog() {
+        try {
+            alertsContainer.innerHTML = '<p>Loading change log...</p>';
+            const response = await fetch(CHANGE_LOG_URL + `?v=${new Date().getTime()}`);
+            if (!response.ok) throw new Error(`Status ${response.status}`);
+            const events = await response.json();
+            
+            alertsContainer.innerHTML = '';
+            if (events.length === 0) {
+                alertsContainer.innerHTML = '<p>No changes have been detected yet.</p>';
+                return;
+            }
+
+            events.reverse().forEach(event => {
+                const card = document.createElement('div');
+                card.className = `alert-card ${event.type.toLowerCase()}`;
+                card.innerHTML = `
+                    <p class="alert-meta">${event.type} - ${event.date}</p>
+                    <h3>${event.document}</h3>
+                    ${event.type === 'NEW' ? `<p><a href="${event.url}" target="_blank">View document</a></p>` : ''}
+                `;
+                alertsContainer.appendChild(card);
+            });
+
+        } catch (error) {
+            alertsContainer.innerHTML = `<p style="color: red; font-weight: bold;">Error loading change log: ${error.message}</p>`;
+        }
+    }
+
+    // Function to search the index and return context
+    async function search(query, top_k = 5) {
+        const queryEmbedding = await extractor(query, { pooling: 'mean', normalize: true });
+        const results = index.search(queryEmbedding.data, top_k);
+        return results.labels.map(i => mapping[i]);
+    }
+
+    // Function to ask the Gemini model a question with context
+    async function askGemini(question, context) {
+        const contextString = context.map(c => `Source Document: ${c.source} (Page ${c.page})\nContent: ${c.content}`).join('\n\n---\n\n');
+        const systemPrompt = "You are an expert Regulatory Operations assistant. Your task is to answer the user's question based *only* on the provided context from official documents. Be concise. After your answer, you MUST cite the source document and page number for the specific information you used in a 'Sources:' section.";
+        const userPrompt = `CONTEXT FROM OFFICIAL DOCUMENTS:\n${contextString}\n\nQUESTION: ${question}`;
+
+        const payload = {
+            contents: [{ parts: [{ text: userPrompt }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+        };
+
+        const response = await fetch(GEMINI_API_URL + API_KEY, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) throw new Error(`API Error: ${response.status} ${response.statusText}`);
+        const result = await response.json();
+        return result.candidates[0].content.parts[0].text;
+    }
+    
+    // Function to handle sending a message
+    async function handleSendMessage() {
+        const question = chatInput.value.trim();
+        if (!question || sendButton.classList.contains('loading')) return;
+
+        addMessage(question, 'user');
+        chatInput.value = '';
+        sendButton.classList.add('loading');
+        sendButton.disabled = true;
+
+        try {
+            addMessage('Thinking... Finding relevant documents in the knowledge base...', 'bot');
+            const context = await search(question);
+            
+            updateLastBotMessage('Found relevant information. Generating answer...');
+            const answer = await askGemini(question, context);
+
+            updateLastBotMessage(answer);
+
+        } catch (error) {
+            updateLastBotMessage(`An error occurred: ${error.message}`, 'error');
+            console.error(error);
+        } finally {
+            sendButton.classList.remove('loading');
+            sendButton.disabled = false;
+        }
+    }
+    
+    // Helper to add/update messages in the UI
+    function addMessage(text, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}-message`;
+        messageDiv.textContent = text;
+        chatHistory.appendChild(messageDiv);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function updateLastBotMessage(text, type = 'bot') {
+        const lastMessage = chatHistory.lastElementChild;
+        if (lastMessage && lastMessage.classList.contains('bot-message')) {
+            lastMessage.className = `message bot-message ${type}`;
+            lastMessage.innerHTML = text.replace(/Sources:/g, '<strong>Sources:</strong>').replace(/\n/g, '<br>');
+        }
+    }
+
+    // Event Listeners
+    sendButton.addEventListener('click', handleSendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSendMessage();
+    });
+
+    // Initialize the app on page load
+    initializeApp();
+
+</script>
+</body>
+</html>
+
