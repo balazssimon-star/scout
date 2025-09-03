@@ -52,17 +52,25 @@ jobs:
 
       # Step 4: Run the actual scout script
       # --- FIX ---
-      # Correcting the path to the script based on the error log. This assumes
-      # the script is located inside a subfolder named 'scout'.
+      # This step now dynamically finds the script's location instead of using a
+      # hardcoded path. This is much more robust.
       - name: Run the EMA Scout script
-        run: python scout/ema_scout.py
+        run: |
+          # Find the script in the repository to handle any subdirectory structure
+          SCRIPT_PATH=$(find . -name "ema_scout.py" -print -quit)
+          if [ -z "$SCRIPT_PATH" ]; then
+            echo "Error: ema_scout.py not found in the repository!"
+            exit 1
+          fi
+          echo "Found script at: $SCRIPT_PATH"
+          python "$SCRIPT_PATH"
 
       # Step 5: Check for changes in the log file and commit them
       - name: Commit and push if log file changed
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "github-actions-bot@users.noreply.github.com"
+          # The scout script will create the log file in the root, so this path is correct.
           git add document_log.json
           git diff-index --quiet HEAD || git commit -m "Update EMA document log"
           git push
-
