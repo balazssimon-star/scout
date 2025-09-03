@@ -1,9 +1,10 @@
-# RegOps Co-Pilot: Document Indexer v1.0
-# Purpose: This script scans the repository for PDF documents, extracts their text,
-#          chunks the text, creates vector embeddings, and saves them to a
-#          searchable FAISS index.
+# RegOps Co-Pilot: Document Indexer v1.1
+# Purpose: This script scans for PDFs, extracts text, creates vector embeddings,
+#          and saves them to a FAISS index and a JSON mapping file.
 #
-# This creates the "brain" for our chatbot.
+# Changes in v1.1:
+# - Switched from pickle (.pkl) to JSON (.json) for the mapping file for
+#   better web browser compatibility.
 
 import os
 import fitz  # PyMuPDF
@@ -11,20 +12,16 @@ from sentence_transformers import SentenceTransformer
 import numpy as np
 import faiss
 import json
-import pickle
 
 # --- CONFIGURATION ---
-# Directories to scan for PDF files
-PDF_DIRECTORIES = ['.', '_archive'] # Scan root and the archive folder
-# Name of the pre-trained model to create embeddings
+PDF_DIRECTORIES = ['.', '_archive']
 MODEL_NAME = 'all-MiniLM-L6-v2' 
-# Output files for the index and the mapping data
 FAISS_INDEX_FILE = "document_index.faiss"
-MAPPING_FILE = "document_mapping.pkl"
+# --- UPDATED FILE NAME ---
+MAPPING_FILE = "document_mapping.json" 
 # --- END CONFIGURATION ---
 
 def find_pdf_files(directories):
-    """Finds all PDF files in a list of directories."""
     pdf_files = []
     for directory in directories:
         if not os.path.exists(directory):
@@ -37,7 +34,6 @@ def find_pdf_files(directories):
     return pdf_files
 
 def extract_text_from_pdf(pdf_path):
-    """Extracts text from a single PDF, returning text per page."""
     try:
         doc = fitz.open(pdf_path)
         pages_text = []
@@ -50,7 +46,6 @@ def extract_text_from_pdf(pdf_path):
         return []
 
 def create_chunks_and_mapping(pdf_files):
-    """Creates text chunks and a mapping to their source document/page."""
     chunks = []
     mapping = []
     
@@ -58,7 +53,6 @@ def create_chunks_and_mapping(pdf_files):
         print(f"--> Processing: {pdf_path}")
         pages_text = extract_text_from_pdf(pdf_path)
         for page_num, text in enumerate(pages_text):
-            # We can use simple paragraph splitting as our chunking strategy
             paragraphs = text.split('\n\n')
             for paragraph in paragraphs:
                 cleaned_para = paragraph.strip()
@@ -72,7 +66,7 @@ def create_chunks_and_mapping(pdf_files):
     return chunks, mapping
 
 def main():
-    print("--- Starting Document Indexer ---")
+    print("--- Starting Document Indexer v1.1 ---")
 
     pdf_files = find_pdf_files(PDF_DIRECTORIES)
     if not pdf_files:
@@ -88,16 +82,11 @@ def main():
         
     print(f"\nCreated {len(chunks)} text chunks. Now creating embeddings...")
 
-    # Load the powerful sentence-transformer model
     model = SentenceTransformer(MODEL_NAME)
-    
-    # Create the vector embeddings. This might take a few minutes.
     embeddings = model.encode(chunks, show_progress_bar=True)
     
-    # FAISS requires the embeddings to be in a specific format (float32)
     embeddings = np.array(embeddings).astype('float32')
     
-    # Create the FAISS index
     index = faiss.IndexFlatL2(embeddings.shape[1])
     index.add(embeddings)
     
@@ -105,11 +94,11 @@ def main():
     faiss.write_index(index, FAISS_INDEX_FILE)
     
     print(f"Saving the mapping data to '{MAPPING_FILE}'...")
-    with open(MAPPING_FILE, 'wb') as f:
-        pickle.dump(mapping, f)
+    # --- THIS IS THE CHANGED LINE: USE JSON INSTEAD OF PICKLE ---
+    with open(MAPPING_FILE, 'w', encoding='utf-8') as f:
+        json.dump(mapping, f, indent=2)
         
     print("\n--- Indexing Complete! The chatbot 'brain' is ready. ---")
-
 
 if __name__ == "__main__":
     main()
