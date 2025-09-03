@@ -22,7 +22,6 @@ jobs:
   run-scout:
     runs-on: ubuntu-latest
 
-    # --- FIX ---
     # Grant the workflow permission to write to the repository's contents.
     # This is required for the step that commits the log file back.
     permissions:
@@ -52,8 +51,11 @@ jobs:
         run: ls -R
 
       # Step 4: Run the actual scout script
+      # --- FIX ---
+      # Correcting the path to the script based on the error log. This assumes
+      # the script is located inside a subfolder named 'scout'.
       - name: Run the EMA Scout script
-        run: python ema_scout.py
+        run: python scout/ema_scout.py
 
       # Step 5: Check for changes in the log file and commit them
       - name: Commit and push if log file changed
