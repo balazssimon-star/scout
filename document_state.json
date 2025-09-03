@@ -1,1 +1,54 @@
-{}
+{
+    "PAM submission form": {
+        "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
+        "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
+    },
+    "PLM Portal eAF Release notes": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "hash": "f7a75e49a5d6ee647b9839ea659954c720b34c769c82b73ec7510c0ba62d29ff"
+    },
+    "PLM Portal eAF Q&A document": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20eAF%20-%20Q&A%20-%20July%202025.pdf",
+        "hash": "66719d054e39b294ac6cd5b05d1a452eb9ed12f527bf25f88a79c59138801548"
+    },
+    "here": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF FHIR XML - Release Notes.pdf",
+        "hash": "fd8e4e39d54f81d39aeaa35499320fe200663660fb44b9c1d75d5c0b5b5dff54"
+    },
+    "Portal eAF Release notes": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "hash": "f7a75e49a5d6ee647b9839ea659954c720b34c769c82b73ec7510c0ba62d29ff"
+    },
+    "PLM Portal eAF guide to navigation": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF guide to navigation - eAF user guide.pdf",
+        "hash": "257aa9c33fe9e181e83bbe7a3f599e8cc1ea16705c18c0bfd86ee58faced4b0a"
+    },
+    "EU eCTD M1 Specification, version 3.1.1": {
+        "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1.pdf",
+        "hash": "ae27b9a2258ac396071234539f2bbd88491dec03521c1b12ded135bdf49b2492"
+    },
+    "Release Notes": {
+        "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1%20-%20Release%20Notes.pdf",
+        "hash": "2fd472b0b3f1efaa297b1de92c9379845273e70d33c62db024670e219a1c5eb9"
+    },
+    "Release Notes.": {
+        "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Validation%20Criteria%20v8.2%20-%20Release%20Notes.pdf",
+        "hash": "8e9a7b27cef444537a26a7a629a900c7f29900931e1c0130df756e7ad315d154"
+    },
+    "Harmonised guidance": {
+        "url": "https://esubmission.ema.europa.eu/eumodule1/Harmonised%20guidance%20eCTD%20-%20version%206.0.1.pdf",
+        "hash": "049ffdf9130c07e32363db12cb22b4f869940375ca176de39a52aa9220a94249"
+    },
+    "timeline": {
+        "url": "https://esubmission.ema.europa.eu/cessp/eAF%20Timeline%20April%202025.pdf",
+        "hash": "9f05656d6476ead64b43ce1bcc6942822c7157d23636e870d2a8616abe09f6f3"
+    },
+    "Harmonised guidance eCTD - version 6.0": {
+        "url": "https://esubmission.ema.europa.eu/ectd/docs/Harmonised guidance eCTD - version 6.0.pdf",
+        "hash": "13bfbadeb2014257f318b655666d4e908c630ab93d02320ff8ec384b51f5dfb3"
+    },
+    "PLM Portal eAF Release Notes": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "hash": "f7a75e49a5d6ee647b9839ea659954c720b34c769c82b73ec7510c0ba62d29ff"
+    }
+}
