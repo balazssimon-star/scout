@@ -1,53 +1,32 @@
-# GitHub Actions Workflow: Document Indexer
-# Purpose: This workflow builds the "brain" for our chatbot. It runs the
-#          indexer.py script to create the FAISS index and mapping files.
-#
-# How it works:
-# 1. It is triggered MANUALLY from the GitHub Actions tab. It does not run on a schedule.
-# 2. It installs all the necessary heavy-duty AI libraries.
-# 3. It runs the indexer.py script.
-# 4. It commits the resulting 'brain' files (index and mapping) back to the repository.
-
 name: Build Chatbot Index
-
-# This workflow is triggered manually
 on:
   workflow_dispatch:
-
 jobs:
   build-index:
     runs-on: ubuntu-latest
-    # Give the job more time, as downloading models and indexing can be slow
     timeout-minutes: 15 
-
     permissions:
       contents: write
-
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      # Install all required libraries for BOTH the scout and the indexer
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4 PyMuPDF
           pip install sentence-transformers faiss-cpu
-
       - name: Run the Indexer script
         run: python indexer.py
-
       - name: Commit and push the new index files
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "github-actions-bot@users.noreply.github.com"
-          # Add all new/changed files to be committed
-          git add document_index.faiss document_mapping.pkl
-          # Commit only if there are new index files to commit
+          # --- THIS LINE IS UPDATED to save the new .json file ---
+          git add document_index.faiss document_mapping.json
           git diff-index --quiet HEAD || git commit -m "Build/update chatbot index files"
           git push
+
