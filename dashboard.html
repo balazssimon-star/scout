@@ -3,19 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RegOps Co-Pilot v5.2 (CDN Fix)</title>
-    <!-- Import the AI libraries required to run the models in the browser -->
-    <script type="importmap">
-    {
-        "imports": {
-            "@xenova/transformers": "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1/dist/transformers.min.js",
-            "onnxruntime-web": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/ort.min.js",
-            "faiss-wasm": "https://unpkg.com/faiss-wasm@0.2.2/dist/faiss-wasm.es.js"
-        }
-    }
-    </script>
+    <title>RegOps Co-Pilot v6.0 (Final Bundle)</title>
+    <!-- All scripts are now loaded as modules at the end of the body for better performance and reliability -->
     <style>
-        /* A more refined and professional styling */
         :root { --accent-color: #007bff; --bg-color: #f8f9fa; --panel-bg: #ffffff; --border-color: #dee2e6; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; color: #212529; display: flex; justify-content: center; }
         .container { width: 100%; max-width: 1400px; display: flex; flex-direction: column; gap: 20px; }
@@ -24,7 +14,6 @@
         .chat-panel { flex: 2; display: flex; flex-direction: column; }
         .whats-new-panel { flex: 1; max-height: 90vh; overflow-y: auto; }
         h2 { margin-top: 0; color: #343a40; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
-        /* Chat History Styling */
         #chat-history { flex-grow: 1; overflow-y: auto; padding: 10px; margin-bottom: 15px; border: 1px solid var(--border-color); border-radius: 6px; display: flex; flex-direction: column; }
         .message { margin-bottom: 15px; padding: 10px 15px; border-radius: 12px; line-height: 1.5; max-width: 85%; }
         .user-message { background-color: var(--accent-color); color: white; align-self: flex-end; margin-left: auto; }
@@ -32,13 +21,11 @@
         .bot-message.error { background-color: #f8d7da; color: #721c24; font-weight: bold; }
         .bot-message .sources { margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px; }
         .bot-message .source-item { font-size: 0.8rem; color: #6c757d; margin-bottom: 5px; word-wrap: break-word; }
-        /* Chat Input Styling */
         #chat-input-area { display: flex; gap: 10px; }
         #chat-input { flex-grow: 1; padding: 12px; border: 1px solid #ccc; border-radius: 6px; }
         #send-button { background-color: var(--accent-color); color: white; border: none; padding: 0 20px; border-radius: 6px; cursor: pointer; font-weight: 600; }
         #send-button.loading, #send-button:disabled { background-color: #6c757d; cursor: not-allowed; }
         #status-text { margin-top: 10px; text-align: center; color: #6c757d; font-style: italic; }
-        /* What's New Styling */
         .alert-card { border-left: 5px solid #ccc; padding: 15px; margin-bottom: 15px; background-color: #fdfdfd; }
         .alert-card.new { border-color: #28a745; }
         .alert-card.updated { border-color: #007bff; }
@@ -69,11 +56,11 @@
 </div>
 
 <script type="module">
-    // Import the necessary AI libraries
-    import { pipeline, env } from '@xenova/transformers';
-    import { FaissIndex } from 'faiss-wasm';
-
-    env.allowLocalModels = false;
+    // --- FIX ---
+    // Switched to a modern module-based approach to resolve loading and reference errors.
+    // Libraries are now imported directly and reliably.
+    import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1/dist/transformers.min.js';
+    import { FaissIndex } from 'https://unpkg.com/faiss-wasm@0.2.2/dist/faiss-wasm.es.js';
 
     // --- CONFIGURATION ---
     const GITHUB_USERNAME = "balazssimon-star";
@@ -87,19 +74,24 @@
     const API_KEY = ""; // <-- PASTE YOUR API KEY HERE
     // --- END CONFIGURATION ---
 
+    // UI Elements
     const statusText = document.getElementById('status-text');
     const chatInput = document.getElementById('chat-input');
     const sendButton = document.getElementById('send-button');
     const chatHistory = document.getElementById('chat-history');
     const alertsContainer = document.getElementById('alerts-container');
 
+    // AI Model and Data state
     let extractor, index, mapping;
 
+    // Main initialization function
     async function initializeApp() {
         if (!API_KEY) {
             statusText.textContent = "Error: Gemini API key is missing. Please paste it into the dashboard.html file.";
             return;
         }
+        env.allowLocalModels = false;
+        
         await Promise.all([
             initializeChatbot(),
             fetchAndDisplayChangeLog()
@@ -163,14 +155,12 @@
         }
     }
 
-    // Function to search the index and return context
     async function search(query, top_k = 5) {
         const queryEmbedding = await extractor(query, { pooling: 'mean', normalize: true });
         const results = index.search(queryEmbedding.data, top_k);
         return results.labels.map(i => mapping[i]);
     }
 
-    // Function to ask the Gemini model a question with context
     async function askGemini(question, context) {
         const contextString = context.map(c => `Source Document: ${c.source} (Page ${c.page})\nContent: ${c.content}`).join('\n\n---\n\n');
         const systemPrompt = "You are an expert Regulatory Operations assistant. Your task is to answer the user's question based *only* on the provided context from official documents. Be concise. After your answer, you MUST cite the source document and page number for the specific information you used in a 'Sources:' section.";
@@ -192,7 +182,6 @@
         return result.candidates[0].content.parts[0].text;
     }
     
-    // Function to handle sending a message
     async function handleSendMessage() {
         const question = chatInput.value.trim();
         if (!question || sendButton.classList.contains('loading')) return;
@@ -220,7 +209,6 @@
         }
     }
     
-    // Helper to add/update messages in the UI
     function addMessage(text, type) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}-message`;
@@ -237,15 +225,12 @@
         }
     }
 
-    // Event Listeners
     sendButton.addEventListener('click', handleSendMessage);
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleSendMessage();
     });
 
-    // Initialize the app on page load
     initializeApp();
-
 </script>
 </body>
 </html>
