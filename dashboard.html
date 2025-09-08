@@ -57,11 +57,9 @@
 
 <script type="module">
     // --- FINAL FIX ---
-    // Switched to a pure module-based approach. All libraries are now imported
-    // directly here, which is the most reliable and modern method. This resolves
-    // SyntaxError and ReferenceError issues.
+    // Using the most reliable CDNs for both libraries with the modern module import syntax.
     import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1/dist/transformers.min.js';
-    import { FaissIndex } from 'https://unpkg.com/faiss-wasm@0.2.2/dist/faiss-wasm.es.js';
+    import { FaissIndex } from 'https://cdn.jsdelivr.net/npm/faiss-wasm@0.2.2/dist/faiss-wasm.es.js';
 
     // --- CONFIGURATION ---
     const GITHUB_USERNAME = "balazssimon-star";
