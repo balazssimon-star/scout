@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RegOps Co-Pilot v8.0 (Diagnostic)</title>
-    <!--
-      FINAL FIX: Re-architected to be a diagnostic tool. It will automatically
-      detect the correct branch and provide specific errors if a file is not found.
-    -->
-    <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1"></script>
+    <title>RegOps Co-Pilot v8.0 (Definitive Fix)</title>
+    <!-- All script loading is now handled in the single module script at the end for max reliability -->
     <style>
         :root { --accent-color: #007bff; --bg-color: #f8f9fa; --panel-bg: #ffffff; --border-color: #dee2e6; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; color: #212529; display: flex; justify-content: center; }
@@ -59,202 +55,195 @@
     </div>
 </div>
 
-<script>
-    const main = async () => {
-        const { pipeline, env } = window.Transformers;
-        const faissModule = await import('https://cdn.jsdelivr.net/npm/faiss-wasm@0.2.2/dist/faiss-wasm.es.js');
-        const { FaissIndex } = faissModule;
-        
+<script type="module">
+    // --- DEFINITIVE FIX ---
+    // All libraries are imported here, at the start of the single module script.
+    // This is the most robust and modern way to handle dependencies and avoids all previous errors.
+    import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1/dist/transformers.min.js';
+    import { FaissIndex } from 'https://cdn.jsdelivr.net/npm/faiss-wasm@0.2.2/dist/faiss-wasm.es.js';
+
+    // --- CONFIGURATION ---
+    const GITHUB_USERNAME = "balazssimon-star";
+    const GITHUB_REPO = "scout";
+    const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=";
+    const API_KEY = ""; // <-- PASTE YOUR API KEY HERE
+    // --- END CONFIGURATION ---
+
+    const statusText = document.getElementById('status-text');
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-button');
+    const chatHistory = document.getElementById('chat-history');
+    const alertsContainer = document.getElementById('alerts-container');
+
+    let extractor, index, mapping, BASE_URL, CHANGE_LOG_URL, INDEX_URL, MAPPING_URL;
+
+    // --- DIAGNOSTIC FUNCTION ---
+    async function findCorrectBaseUrl() {
+        statusText.textContent = "Detecting repository structure...";
+        const branches = ["main", "master"];
+        for (const branch of branches) {
+            const testUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/${branch}/change_log.json`;
+            try {
+                const response = await fetch(testUrl);
+                if (response.ok) {
+                    console.log(`Successfully found branch: ${branch}`);
+                    return `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/${branch}/`;
+                }
+            } catch (e) { /* continue */ }
+        }
+        throw new Error("Could not find 'change_log.json' in either 'main' or 'master' branch. Please ensure the file exists in the root of your repository.");
+    }
+
+    async function initializeApp() {
+        if (!API_KEY) {
+            statusText.textContent = "Error: Gemini API key is missing. Please paste it into this dashboard.html file.";
+            return;
+        }
         env.allowLocalModels = false;
 
-        // --- CONFIGURATION ---
-        const GITHUB_USERNAME = "balazssimon-star";
-        const GITHUB_REPO = "scout";
-        const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=";
-        const API_KEY = ""; // <-- PASTE YOUR API KEY HERE
-        // --- END CONFIGURATION ---
+        try {
+            BASE_URL = await findCorrectBaseUrl();
+            CHANGE_LOG_URL = BASE_URL + "change_log.json";
+            INDEX_URL = BASE_URL + "document_index.faiss";
+            MAPPING_URL = BASE_URL + "document_mapping.json";
 
-        const statusText = document.getElementById('status-text');
-        const chatInput = document.getElementById('chat-input');
-        const sendButton = document.getElementById('send-button');
-        const chatHistory = document.getElementById('chat-history');
-        const alertsContainer = document.getElementById('alerts-container');
+            await Promise.all([
+                initializeChatbot(),
+                fetchAndDisplayChangeLog()
+            ]);
 
-        let extractor, index, mapping, BASE_URL, CHANGE_LOG_URL, INDEX_URL, MAPPING_URL;
-
-        // --- NEW DIAGNOSTIC FUNCTION ---
-        async function findCorrectBaseUrl() {
-            statusText.textContent = "Detecting repository structure...";
-            const branches = ["main", "master"];
-            for (const branch of branches) {
-                const testUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/${branch}/change_log.json`;
-                try {
-                    const response = await fetch(testUrl);
-                    if (response.ok) {
-                        console.log(`Successfully found branch: ${branch}`);
-                        return `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/${branch}/`;
-                    }
-                } catch (e) { /* continue */ }
-            }
-            throw new Error("Could not find 'change_log.json' in either 'main' or 'master' branch. Please ensure the file exists in the root of your repository.");
+        } catch (error) {
+            statusText.textContent = `CRITICAL ERROR: ${error.message}`;
+            console.error("Initialization failed:", error);
         }
+    }
 
-        async function initializeApp() {
-            if (!API_KEY) {
-                statusText.textContent = "Error: Gemini API key is missing. Please paste it into this dashboard.html file.";
+    async function initializeChatbot() {
+        try {
+            statusText.textContent = "Step 1/4: Loading embedding model (Transformers.js)...";
+            extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+
+            statusText.textContent = "Step 2/4: Loading search index file (document_index.faiss)...";
+            const indexResponse = await fetch(INDEX_URL);
+            if (!indexResponse.ok) throw new Error(`Could not load index file at ${INDEX_URL}. Status: ${indexResponse.status}. Please run the 'Build Chatbot Index' action.`);
+            const indexData = await indexResponse.arrayBuffer();
+            
+            statusText.textContent = "Step 3/4: Deserializing search index (FAISS)...";
+            index = FaissIndex.deserialize(new Uint8Array(indexData));
+
+            statusText.textContent = "Step 4/4: Loading document map (document_mapping.json)...";
+            const mappingResponse = await fetch(MAPPING_URL);
+            if (!mappingResponse.ok) throw new Error(`Could not load mapping file at ${MAPPING_URL}. Status: ${mappingResponse.status}. Please run the 'Build Chatbot Index' action.`);
+            mapping = await mappingResponse.json();
+
+            statusText.textContent = "Ready. Ask a technical question.";
+            sendButton.disabled = false;
+            chatInput.disabled = false;
+            chatInput.placeholder = "Ask about EMA guidelines...";
+        } catch (error) {
+            statusText.textContent = `Chatbot Init Error: ${error.message}`;
+            console.error("Initialization failed:", error);
+        }
+    }
+    
+    async function fetchAndDisplayChangeLog() {
+        try {
+            alertsContainer.innerHTML = '<p>Loading change log...</p>';
+            const response = await fetch(CHANGE_LOG_URL + `?v=${new Date().getTime()}`);
+            if (!response.ok) throw new Error(`Status ${response.status}`);
+            const events = await response.json();
+            
+            alertsContainer.innerHTML = '';
+            if (events.length === 0) {
+                alertsContainer.innerHTML = '<p>No changes have been detected yet.</p>';
                 return;
             }
 
-            try {
-                BASE_URL = await findCorrectBaseUrl();
-                CHANGE_LOG_URL = BASE_URL + "change_log.json";
-                INDEX_URL = BASE_URL + "document_index.faiss";
-                MAPPING_URL = BASE_URL + "document_mapping.json";
-
-                await Promise.all([
-                    initializeChatbot(),
-                    fetchAndDisplayChangeLog()
-                ]);
-
-            } catch (error) {
-                statusText.textContent = `CRITICAL ERROR: ${error.message}`;
-                console.error("Initialization failed:", error);
-            }
-        }
-
-        async function initializeChatbot() {
-            try {
-                statusText.textContent = "Step 1/4: Loading embedding model (Transformers.js)...";
-                extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
-
-                statusText.textContent = "Step 2/4: Loading search index file (document_index.faiss)...";
-                const indexResponse = await fetch(INDEX_URL);
-                if (!indexResponse.ok) throw new Error(`Could not load index file at ${INDEX_URL}. Status: ${indexResponse.status}. Please run the 'Build Chatbot Index' action.`);
-                const indexData = await indexResponse.arrayBuffer();
-                
-                statusText.textContent = "Step 3/4: Deserializing search index (FAISS)...";
-                index = FaissIndex.deserialize(new Uint8Array(indexData));
-
-                statusText.textContent = "Step 4/4: Loading document map (document_mapping.json)...";
-                const mappingResponse = await fetch(MAPPING_URL);
-                if (!mappingResponse.ok) throw new Error(`Could not load mapping file at ${MAPPING_URL}. Status: ${mappingResponse.status}. Please run the 'Build Chatbot Index' action.`);
-                mapping = await mappingResponse.json();
-
-                statusText.textContent = "Ready. Ask a technical question.";
-                sendButton.disabled = false;
-                chatInput.disabled = false;
-                chatInput.placeholder = "Ask about EMA guidelines...";
-            } catch (error) {
-                statusText.textContent = `Chatbot Init Error: ${error.message}`;
-                console.error("Initialization failed:", error);
-            }
-        }
-        
-        async function fetchAndDisplayChangeLog() {
-            try {
-                alertsContainer.innerHTML = '<p>Loading change log...</p>';
-                const response = await fetch(CHANGE_LOG_URL + `?v=${new Date().getTime()}`);
-                if (!response.ok) throw new Error(`Status ${response.status}`);
-                const events = await response.json();
-                
-                alertsContainer.innerHTML = '';
-                if (events.length === 0) {
-                    alertsContainer.innerHTML = '<p>No changes have been detected yet.</p>';
-                    return;
-                }
-
-                events.reverse().forEach(event => {
-                    const card = document.createElement('div');
-                    card.className = `alert-card ${event.type.toLowerCase()}`;
-                    card.innerHTML = `
-                        <p class="alert-meta">${event.type} - ${event.date}</p>
-                        <h3>${event.document}</h3>
-                        ${event.type === 'NEW' ? `<p><a href="${event.url}" target="_blank">View document</a></p>` : ''}
-                    `;
-                    alertsContainer.appendChild(card);
-                });
-            } catch (error) {
-                alertsContainer.innerHTML = `<p style="color: red; font-weight: bold;">Error loading change log: ${error.message}</p>`;
-            }
-        }
-
-        async function search(query, top_k = 5) {
-            const queryEmbedding = await extractor(query, { pooling: 'mean', normalize: true });
-            const results = index.search(queryEmbedding.data, top_k);
-            return results.labels.map(i => mapping[i]);
-        }
-
-        async function askGemini(question, context) {
-            const contextString = context.map(c => `Source Document: ${c.source} (Page ${c.page})\nContent: ${c.content}`).join('\n\n---\n\n');
-            const systemPrompt = "You are an expert Regulatory Operations assistant. Your task is to answer the user's question based *only* on the provided context from official documents. Be concise. After your answer, you MUST cite the source document and page number for the specific information you used in a 'Sources:' section.";
-            const userPrompt = `CONTEXT FROM OFFICIAL DOCUMENTS:\n${contextString}\n\nQUESTION: ${question}`;
-
-            const payload = { contents: [{ parts: [{ text: userPrompt }] }] };
-            if (systemPrompt) payload.systemInstruction = { parts: [{ text: systemPrompt }] };
-
-            const response = await fetch(GEMINI_API_URL + API_KEY, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+            events.reverse().forEach(event => {
+                const card = document.createElement('div');
+                card.className = `alert-card ${event.type.toLowerCase()}`;
+                card.innerHTML = `
+                    <p class="alert-meta">${event.type} - ${event.date}</p>
+                    <h3>${event.document}</h3>
+                    ${event.type === 'NEW' ? `<p><a href="${event.url}" target="_blank">View document</a></p>` : ''}
+                `;
+                alertsContainer.appendChild(card);
             });
-
-            if (!response.ok) throw new Error(`API Error: ${response.status} ${response.statusText}`);
-            const result = await response.json();
-            return result.candidates[0].content.parts[0].text;
+        } catch (error) {
+            alertsContainer.innerHTML = `<p style="color: red; font-weight: bold;">Error loading change log: ${error.message}</p>`;
         }
-        
-        function handleSendMessage() {
-            (async () => {
-                const question = chatInput.value.trim();
-                if (!question || sendButton.classList.contains('loading')) return;
-                addMessage(question, 'user');
-                chatInput.value = '';
-                sendButton.classList.add('loading');
-                sendButton.disabled = true;
-                try {
-                    addMessage('Thinking... Finding relevant documents...', 'bot');
-                    const context = await search(question);
-                    updateLastBotMessage('Found relevant information. Generating answer...');
-                    const answer = await askGemini(question, context);
-                    updateLastBotMessage(answer);
-                } catch (error) {
-                    updateLastBotMessage(`An error occurred: ${error.message}`, 'error');
-                } finally {
-                    sendButton.classList.remove('loading');
-                    sendButton.disabled = false;
-                }
-            })();
-        }
-        
-        function addMessage(text, type) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${type}-message`;
-            messageDiv.textContent = text;
-            chatHistory.appendChild(messageDiv);
-            chatHistory.scrollTop = chatHistory.scrollHeight;
-        }
-
-        function updateLastBotMessage(text, type = 'bot') {
-            const lastMessage = chatHistory.lastElementChild;
-            if (lastMessage && lastMessage.classList.contains('bot-message')) {
-                lastMessage.className = `message bot-message ${type}`;
-                lastMessage.innerHTML = text.replace(/Sources:/g, '<strong>Sources:</strong>').replace(/\n/g, '<br>');
-            }
-        }
-
-        sendButton.addEventListener('click', handleSendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSendMessage();
-        });
-        
-        initializeApp();
-    };
-
-    if (window.Transformers) {
-        main();
-    } else {
-        window.addEventListener('load', main);
     }
+
+    async function search(query, top_k = 5) {
+        const queryEmbedding = await extractor(query, { pooling: 'mean', normalize: true });
+        const results = index.search(queryEmbedding.data, top_k);
+        return results.labels.map(i => mapping[i]);
+    }
+
+    async function askGemini(question, context) {
+        const contextString = context.map(c => `Source Document: ${c.source} (Page ${c.page})\nContent: ${c.content}`).join('\n\n---\n\n');
+        const systemPrompt = "You are an expert Regulatory Operations assistant. Your task is to answer the user's question based *only* on the provided context from official documents. Be concise. After your answer, you MUST cite the source document and page number for the specific information you used in a 'Sources:' section.";
+        const userPrompt = `CONTEXT FROM OFFICIAL DOCUMENTS:\n${contextString}\n\nQUESTION: ${question}`;
+
+        const payload = { contents: [{ parts: [{ text: userPrompt }] }] };
+        if (systemPrompt) payload.systemInstruction = { parts: [{ text: systemPrompt }] };
+
+        const response = await fetch(GEMINI_API_URL + API_KEY, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) throw new Error(`API Error: ${response.status} ${response.statusText}`);
+        const result = await response.json();
+        return result.candidates[0].content.parts[0].text;
+    }
+    
+    function handleSendMessage() {
+        (async () => {
+            const question = chatInput.value.trim();
+            if (!question || sendButton.classList.contains('loading')) return;
+            addMessage(question, 'user');
+            chatInput.value = '';
+            sendButton.classList.add('loading');
+            sendButton.disabled = true;
+            try {
+                addMessage('Thinking... Finding relevant documents...', 'bot');
+                const context = await search(question);
+                updateLastBotMessage('Found relevant information. Generating answer...');
+                const answer = await askGemini(question, context);
+                updateLastBotMessage(answer);
+            } catch (error) {
+                updateLastBotMessage(`An error occurred: ${error.message}`, 'error');
+            } finally {
+                sendButton.classList.remove('loading');
+                sendButton.disabled = false;
+            }
+        })();
+    }
+    
+    function addMessage(text, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}-message`;
+        messageDiv.textContent = text;
+        chatHistory.appendChild(messageDiv);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function updateLastBotMessage(text, type = 'bot') {
+        const lastMessage = chatHistory.lastElementChild;
+        if (lastMessage && lastMessage.classList.contains('bot-message')) {
+            lastMessage.className = `message bot-message ${type}`;
+            lastMessage.innerHTML = text.replace(/Sources:/g, '<strong>Sources:</strong>').replace(/\n/g, '<br>');
+        }
+    }
+
+    sendButton.addEventListener('click', handleSendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSendMessage();
+    });
+    
+    initializeApp();
 </script>
 </body>
 </html>
