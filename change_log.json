@@ -89,5 +89,26 @@
         "document": "timeline",
         "new_url": "https://esubmission.ema.europa.eu/cessp/eAF%20Timeline%20April%202025.pdf",
         "archived_old_pdf_path": "_archive/2025-09-23_timeline_old.pdf"
+    },
+    {
+        "date": "2025-09-26",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release Notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-09-26_PLM_Portal_eAF_Release_Notes_old.pdf"
+    },
+    {
+        "date": "2025-09-26",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-09-26_PLM_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2025-09-26",
+        "type": "UPDATED",
+        "document": "Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-09-26_Portal_eAF_Release_notes_old.pdf"
     }
 ]
