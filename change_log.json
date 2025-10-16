@@ -138,5 +138,26 @@
         "document": "here",
         "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF FHIR XML - Release Notes.pdf",
         "archived_old_pdf_path": "_archive/2025-10-01_here_old.pdf"
+    },
+    {
+        "date": "2025-10-16",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release Notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-10-16_PLM_Portal_eAF_Release_Notes_old.pdf"
+    },
+    {
+        "date": "2025-10-16",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-10-16_PLM_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2025-10-16",
+        "type": "UPDATED",
+        "document": "Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-10-16_Portal_eAF_Release_notes_old.pdf"
     }
 ]
