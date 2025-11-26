@@ -201,5 +201,32 @@
         "document": "Portal eAF Release notes",
         "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
         "archived_old_pdf_path": "_archive/2025-11-14_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2025-11-26",
+        "type": "NEW",
+        "document": "PLM Portal eAF Release\r\n                                        notes",
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf"
+    },
+    {
+        "date": "2025-11-26",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release Notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-11-26_PLM_Portal_eAF_Release_Notes_old.pdf"
+    },
+    {
+        "date": "2025-11-26",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-11-26_PLM_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2025-11-26",
+        "type": "UPDATED",
+        "document": "Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "archived_old_pdf_path": "_archive/2025-11-26_Portal_eAF_Release_notes_old.pdf"
     }
 ]
