@@ -228,5 +228,11 @@
         "document": "Portal eAF Release notes",
         "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
         "archived_old_pdf_path": "_archive/2025-11-26_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2025-11-29",
+        "type": "NEW",
+        "document": "updated EU M1 specification v3.1.1",
+        "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD 3.2.2 - EU M1 Implementation Guide v3.1.1.pdf"
     }
 ]

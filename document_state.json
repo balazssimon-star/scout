@@ -3,6 +3,14 @@
         "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
         "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
     },
+    "updated EU M1 specification v3.1.1": {
+        "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD 3.2.2 - EU M1 Implementation Guide v3.1.1.pdf",
+        "hash": "ae27b9a2258ac396071234539f2bbd88491dec03521c1b12ded135bdf49b2492"
+    },
+    "Release Notes": {
+        "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1%20-%20Release%20Notes.pdf",
+        "hash": "2fd472b0b3f1efaa297b1de92c9379845273e70d33c62db024670e219a1c5eb9"
+    },
     "PLM Portal eAF Release\r\n                                        notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
         "hash": "399e7985e37a55a3e3b0072c2ca20e12358d953d62592b3d011095f720aa6680"
@@ -18,10 +26,6 @@
     "the updated EU M1 specification v3.1.1": {
         "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1.pdf",
         "hash": "ae27b9a2258ac396071234539f2bbd88491dec03521c1b12ded135bdf49b2492"
-    },
-    "Release Notes": {
-        "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1%20-%20Release%20Notes.pdf",
-        "hash": "2fd472b0b3f1efaa297b1de92c9379845273e70d33c62db024670e219a1c5eb9"
     },
     "PLM Portal eAF Q&A document": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20eAF%20-%20Q&A%20-%20July%202025.pdf",
