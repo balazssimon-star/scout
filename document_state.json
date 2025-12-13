@@ -3,6 +3,10 @@
         "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
         "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
     },
+    "PLM Portal eAF Release\r\n                                        notes": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "hash": "ab4094d2c6cf01b21d45a605de762ca738724ddbedfe4e5f7718864b78f6c242"
+    },
     "PLM Portal\r\n                                        eAF Q&A": {
         "url": "https://esubmission.ema.europa.eu/cessp/eAF%20Q&A%20Document%20-%20Update%20Q4%202025.pdf",
         "hash": "ef336a5ab2397b59e17ba833f21c9e4692c8008a118d1823ff7ea308ffd50706"
@@ -15,13 +19,9 @@
         "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1%20-%20Release%20Notes.pdf",
         "hash": "2fd472b0b3f1efaa297b1de92c9379845273e70d33c62db024670e219a1c5eb9"
     },
-    "PLM Portal eAF Release\r\n                                        notes": {
-        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "399e7985e37a55a3e3b0072c2ca20e12358d953d62592b3d011095f720aa6680"
-    },
     "PLM Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "399e7985e37a55a3e3b0072c2ca20e12358d953d62592b3d011095f720aa6680"
+        "hash": "ab4094d2c6cf01b21d45a605de762ca738724ddbedfe4e5f7718864b78f6c242"
     },
     "timeline": {
         "url": "https://esubmission.ema.europa.eu/cessp/eAF%20Timeline%20April%202025.pdf",
@@ -41,7 +41,7 @@
     },
     "Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
-        "hash": "399e7985e37a55a3e3b0072c2ca20e12358d953d62592b3d011095f720aa6680"
+        "hash": "ab4094d2c6cf01b21d45a605de762ca738724ddbedfe4e5f7718864b78f6c242"
     },
     "PLM Portal eAF guide to navigation": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF guide to navigation - eAF user guide.pdf",
@@ -65,6 +65,6 @@
     },
     "PLM Portal eAF Release Notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "399e7985e37a55a3e3b0072c2ca20e12358d953d62592b3d011095f720aa6680"
+        "hash": "ab4094d2c6cf01b21d45a605de762ca738724ddbedfe4e5f7718864b78f6c242"
     }
 }
