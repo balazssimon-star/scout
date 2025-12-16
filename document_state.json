@@ -3,6 +3,10 @@
         "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
         "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
     },
+    "practical guidance": {
+        "url": "https://esubmission.ema.europa.eu/eCTD%20NMV/docs/EU%20eCTD%20v4.0%20Practical%20Guidance%20v1.pdf",
+        "hash": "b45bab3b48815b3f522f90c3b5ad51a4c0439d270fea16c2a6ad9288d849db12"
+    },
     "PLM Portal eAF Release\r\n                                        notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
         "hash": "ab4094d2c6cf01b21d45a605de762ca738724ddbedfe4e5f7718864b78f6c242"
