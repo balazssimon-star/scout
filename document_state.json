@@ -3,10 +3,6 @@
         "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
         "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
     },
-    "ESMP FAQs": {
-        "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf",
-        "hash": "556e774ecf2be262eb4ede76102ce3fcfc0771e92073ffe9d228518d5b81420e"
-    },
     "PLM Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
         "hash": "4ee37a2ec59c8b0362b417852d54438a6ef3d556036ae8b9697b5d01ec2364fa"
