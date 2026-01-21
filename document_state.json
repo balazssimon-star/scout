@@ -5,7 +5,11 @@
     },
     "PLM Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "4ee37a2ec59c8b0362b417852d54438a6ef3d556036ae8b9697b5d01ec2364fa"
+        "hash": "c8951ca2b63dfb537614bb1a625874ef54e4bce49f6b3a75b6d2da753dfa3d4c"
+    },
+    "ESMP FAQs": {
+        "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf",
+        "hash": "556e774ecf2be262eb4ede76102ce3fcfc0771e92073ffe9d228518d5b81420e"
     },
     "practical guidance": {
         "url": "https://esubmission.ema.europa.eu/eCTD%20NMV/docs/EU%20eCTD%20v4.0%20Practical%20Guidance%20v1.pdf",
@@ -13,7 +17,7 @@
     },
     "PLM Portal eAF Release\r\n                                        notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "4ee37a2ec59c8b0362b417852d54438a6ef3d556036ae8b9697b5d01ec2364fa"
+        "hash": "c8951ca2b63dfb537614bb1a625874ef54e4bce49f6b3a75b6d2da753dfa3d4c"
     },
     "PLM Portal\r\n                                        eAF Q&A": {
         "url": "https://esubmission.ema.europa.eu/cessp/eAF%20Q&A%20Document%20-%20Update%20Q4%202025.pdf",
@@ -45,7 +49,7 @@
     },
     "Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
-        "hash": "4ee37a2ec59c8b0362b417852d54438a6ef3d556036ae8b9697b5d01ec2364fa"
+        "hash": "c8951ca2b63dfb537614bb1a625874ef54e4bce49f6b3a75b6d2da753dfa3d4c"
     },
     "PLM Portal eAF guide to navigation": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF guide to navigation - eAF user guide.pdf",
@@ -69,6 +73,6 @@
     },
     "PLM Portal eAF Release Notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "4ee37a2ec59c8b0362b417852d54438a6ef3d556036ae8b9697b5d01ec2364fa"
+        "hash": "c8951ca2b63dfb537614bb1a625874ef54e4bce49f6b3a75b6d2da753dfa3d4c"
     }
 }
