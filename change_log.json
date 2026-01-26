@@ -347,5 +347,10 @@
         "document": "Portal eAF Release notes",
         "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
         "archived_old_pdf_path": "_archive/2026-01-21_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2026-01-26",
+        "type": "REMOVED",
+        "document": "ESMP FAQs"
     }
 ]
