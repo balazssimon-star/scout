@@ -358,5 +358,19 @@
         "type": "NEW",
         "document": "ESMP FAQs",
         "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf"
+    },
+    {
+        "date": "2026-01-28",
+        "type": "UPDATED",
+        "document": "Harmonised guidance eCTD - version 6.0",
+        "new_url": "https://esubmission.ema.europa.eu/ectd/docs/Harmonised guidance eCTD - version 6.0.pdf",
+        "archived_old_pdf_path": "_archive/2026-01-28_Harmonised_guidance_eCTD_-_version_6.0_old.pdf"
+    },
+    {
+        "date": "2026-01-28",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF guide to navigation",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF guide to navigation - eAF user guide.pdf",
+        "archived_old_pdf_path": "_archive/2026-01-28_PLM_Portal_eAF_guide_to_navigation_old.pdf"
     }
 ]
