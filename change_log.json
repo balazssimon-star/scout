@@ -630,5 +630,33 @@
         "type": "NEW",
         "document": "updated EU M1 specification v3.1.1",
         "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD 3.2.2 - EU M1 Implementation Guide v3.1.1.pdf"
+    },
+    {
+        "date": "2026-02-19",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release\r\n                                        notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-02-19_PLM_Portal_eAF_Release\r\n________________________________________notes_old.pdf"
+    },
+    {
+        "date": "2026-02-19",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release Notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-02-19_PLM_Portal_eAF_Release_Notes_old.pdf"
+    },
+    {
+        "date": "2026-02-19",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-02-19_PLM_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2026-02-19",
+        "type": "UPDATED",
+        "document": "Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-02-19_Portal_eAF_Release_notes_old.pdf"
     }
 ]
