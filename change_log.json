@@ -723,5 +723,25 @@
         "date": "2026-02-25",
         "type": "REMOVED",
         "document": "updated EU M1 specification v3.1.1"
+    },
+    {
+        "date": "2026-03-20",
+        "type": "NEW",
+        "document": "PLM\r\n                                        Portal eAF Release notes",
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf"
+    },
+    {
+        "date": "2026-03-20",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release\r\n                                        notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-03-20_PLM_Portal_eAF_Release\r\n________________________________________notes_old.pdf"
+    },
+    {
+        "date": "2026-03-20",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-03-20_PLM_Portal_eAF_Release_notes_old.pdf"
     }
 ]
