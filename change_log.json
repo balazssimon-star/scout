@@ -862,5 +862,16 @@
         "date": "2026-05-01",
         "type": "REMOVED",
         "document": "PMS FAQ document"
+    },
+    {
+        "date": "2026-05-02",
+        "type": "NEW",
+        "document": "PMS FAQ document",
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf"
+    },
+    {
+        "date": "2026-05-02",
+        "type": "REMOVED",
+        "document": "ESMP FAQs"
     }
 ]
