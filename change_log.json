@@ -1147,5 +1147,10 @@
         "date": "2026-06-14",
         "type": "REMOVED",
         "document": "PMS FAQ document"
+    },
+    {
+        "date": "2026-06-15",
+        "type": "REMOVED",
+        "document": "ESMP MAH Implementation Guide"
     }
 ]
