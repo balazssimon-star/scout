@@ -11,13 +11,13 @@
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
         "hash": "85d16f7564164b7a14a96205e81d445ab8436a1eaee9c8d1c44b029e33791bd8"
     },
-    "PMS FAQ document": {
-        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf",
-        "hash": "6028864b64cec822395548555f38e330845b6641cae77ea36c7ecd8527b9a7f9"
-    },
     "PLM Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
         "hash": "85d16f7564164b7a14a96205e81d445ab8436a1eaee9c8d1c44b029e33791bd8"
+    },
+    "ESMP FAQs": {
+        "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf",
+        "hash": "55e6e9f9c2e7ef2b6f2f304e627a91a1f2271cb6dfe19d6cf8c0d94ac64218e9"
     },
     "practical guidance": {
         "url": "https://esubmission.ema.europa.eu/eCTD%20NMV/docs/EU%20eCTD%20v4.0%20Practical%20Guidance%20v1.pdf",
@@ -29,6 +29,6 @@
     },
     "PLM Portal\r\n                                        eAF Q&A": {
         "url": "https://esubmission.ema.europa.eu/cessp/eAF%20Q&A%20Document%20-%20Update%20Q4%202025.pdf",
-        "hash": "ef336a5ab2397b59e17ba833f21c9e4692c8008a118d1823ff7ea308ffd50706"
+        "hash": "dcf0e8a6f5d193b891aa27ac383962b3acebcca8fb24d7beea09e62ad7ca3cb6"
     }
 }
