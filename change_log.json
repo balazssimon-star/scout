@@ -1256,5 +1256,25 @@
         "document": "PMS FAQ document",
         "new_url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf",
         "archived_old_pdf_path": "_archive/2026-06-21_PMS_FAQ_document_old.pdf"
+    },
+    {
+        "date": "2026-06-22",
+        "type": "REMOVED",
+        "document": "ESMP FAQs"
+    },
+    {
+        "date": "2026-06-22",
+        "type": "REMOVED",
+        "document": "ESMP MAH Implementation Guide"
+    },
+    {
+        "date": "2026-06-22",
+        "type": "REMOVED",
+        "document": "ESMP MAH User Guide"
+    },
+    {
+        "date": "2026-06-22",
+        "type": "REMOVED",
+        "document": "PMS FAQ document"
     }
 ]
