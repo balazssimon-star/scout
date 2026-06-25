@@ -1276,5 +1276,38 @@
         "date": "2026-06-22",
         "type": "REMOVED",
         "document": "PMS FAQ document"
+    },
+    {
+        "date": "2026-06-25",
+        "type": "NEW",
+        "document": "PMS FAQ document",
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf"
+    },
+    {
+        "date": "2026-06-25",
+        "type": "NEW",
+        "document": "here",
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF FHIR XML - Release Notes.pdf"
+    },
+    {
+        "date": "2026-06-25",
+        "type": "UPDATED",
+        "document": "PLM\r\n                                        Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-06-25_PLM\r\n________________________________________Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2026-06-25",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release\r\n                                        notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-06-25_PLM_Portal_eAF_Release\r\n________________________________________notes_old.pdf"
+    },
+    {
+        "date": "2026-06-25",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-06-25_PLM_Portal_eAF_Release_notes_old.pdf"
     }
 ]
