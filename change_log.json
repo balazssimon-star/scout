@@ -1359,5 +1359,50 @@
         "date": "2026-06-29",
         "type": "REMOVED",
         "document": "PMS FAQ document"
+    },
+    {
+        "date": "2026-06-30",
+        "type": "NEW",
+        "document": "ESMP FAQs",
+        "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf"
+    },
+    {
+        "date": "2026-06-30",
+        "type": "NEW",
+        "document": "PLM\r\n                                            Portal eAF Release notes",
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf"
+    },
+    {
+        "date": "2026-06-30",
+        "type": "NEW",
+        "document": "PLM Portal\r\n                                            eAF Q&A",
+        "url": "https://esubmission.ema.europa.eu/cessp/eAF%20Q&A%20Document%20-%20Update%20Q4%202025.pdf"
+    },
+    {
+        "date": "2026-06-30",
+        "type": "NEW",
+        "document": "PLM Portal eAF Release\r\n                                            notes",
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf"
+    },
+    {
+        "date": "2026-06-30",
+        "type": "NEW",
+        "document": "PMS FAQ document",
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf"
+    },
+    {
+        "date": "2026-06-30",
+        "type": "REMOVED",
+        "document": "PLM\r\n                                        Portal eAF Release notes"
+    },
+    {
+        "date": "2026-06-30",
+        "type": "REMOVED",
+        "document": "PLM Portal\r\n                                        eAF Q&A"
+    },
+    {
+        "date": "2026-06-30",
+        "type": "REMOVED",
+        "document": "PLM Portal eAF Release\r\n                                        notes"
     }
 ]
