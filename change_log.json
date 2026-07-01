@@ -1404,5 +1404,25 @@
         "date": "2026-06-30",
         "type": "REMOVED",
         "document": "PLM Portal eAF Release\r\n                                        notes"
+    },
+    {
+        "date": "2026-07-01",
+        "type": "REMOVED",
+        "document": "ESMP FAQs"
+    },
+    {
+        "date": "2026-07-01",
+        "type": "REMOVED",
+        "document": "ESMP MAH Implementation Guide"
+    },
+    {
+        "date": "2026-07-01",
+        "type": "REMOVED",
+        "document": "ESMP MAH User Guide"
+    },
+    {
+        "date": "2026-07-01",
+        "type": "REMOVED",
+        "document": "PMS FAQ document"
     }
 ]
