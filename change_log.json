@@ -1424,5 +1424,29 @@
         "date": "2026-07-01",
         "type": "REMOVED",
         "document": "PMS FAQ document"
+    },
+    {
+        "date": "2026-07-02",
+        "type": "NEW",
+        "document": "ESMP FAQs",
+        "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf"
+    },
+    {
+        "date": "2026-07-02",
+        "type": "NEW",
+        "document": "ESMP MAH Implementation Guide",
+        "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-implementation-guide-marketing-authorisation-holders_en.pdf"
+    },
+    {
+        "date": "2026-07-02",
+        "type": "NEW",
+        "document": "ESMP MAH User Guide",
+        "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-user-guide-marketing-authorisation-holders_en.pdf"
+    },
+    {
+        "date": "2026-07-02",
+        "type": "NEW",
+        "document": "PMS FAQ document",
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf"
     }
 ]
