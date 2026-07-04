@@ -27,6 +27,14 @@
         "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-implementation-guide-marketing-authorisation-holders_en.pdf",
         "hash": "5d6801360b360d02352667f8d0afe90833b63e38842bd60301e78c2dc0dfddeb"
     },
+    "PMS FAQ document": {
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf",
+        "hash": "6028864b64cec822395548555f38e330845b6641cae77ea36c7ecd8527b9a7f9"
+    },
+    "ESMP FAQs": {
+        "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf",
+        "hash": "55e6e9f9c2e7ef2b6f2f304e627a91a1f2271cb6dfe19d6cf8c0d94ac64218e9"
+    },
     "practical guidance": {
         "url": "https://esubmission.ema.europa.eu/eCTD%20NMV/docs/EU%20eCTD%20v4.0%20Practical%20Guidance%20v1.pdf",
         "hash": "b45bab3b48815b3f522f90c3b5ad51a4c0439d270fea16c2a6ad9288d849db12"
