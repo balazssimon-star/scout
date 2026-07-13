@@ -1567,5 +1567,16 @@
         "date": "2026-07-12",
         "type": "REMOVED",
         "document": "PMS FAQ document"
+    },
+    {
+        "date": "2026-07-13",
+        "type": "NEW",
+        "document": "PMS FAQ document",
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf"
+    },
+    {
+        "date": "2026-07-13",
+        "type": "REMOVED",
+        "document": "ESMP MAH Implementation Guide"
     }
 ]
