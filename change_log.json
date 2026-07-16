@@ -1613,5 +1613,11 @@
         "document": "release notes",
         "new_url": "https://esubmission.ema.europa.eu/eaf/eAF_1.28.0.0/eAF-Release-Notes-MAAH_1.28.0.0.pdf",
         "archived_old_pdf_path": "_archive/2026-07-15_release_notes_old.pdf"
+    },
+    {
+        "date": "2026-07-16",
+        "type": "NEW",
+        "document": "ESMP MAH Implementation Guide",
+        "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-implementation-guide-marketing-authorisation-holders_en.pdf"
     }
 ]
