@@ -3,13 +3,17 @@
         "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
         "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
     },
-    "PLM Portal eAF Release notes": {
-        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "724e29f1c99d32ae619212768fc3e45c536e7860a7831d76fb5e6f7ff4e5b187"
-    },
     "Technical User Guide for eAF.pdf": {
         "url": "https://esubmission.ema.europa.eu/eaf/docs/Technical%20User%20Guide%20for%20eAF.pdf",
         "hash": "f495b42e736940a724663ebd09b38ac8ec2b38af122d603a08ecf8179bd51daf"
+    },
+    "Practical user guide for electronic Application\r\n                                                Forms (eAF) for\r\n                                                human and veterinary products in the EU": {
+        "url": "https://esubmission.ema.europa.eu/eaf/docs/Practical%20_user%20_guide%20for%20electronic_Application_Forms%20eAF%20for%20human%20and%20veterinary%20products%20in%20the%20EU.pdf",
+        "hash": "c5a826e7ec52c6c05be08aa3f93027495b88454942a3e1b6e8111dc059c71ec3"
+    },
+    "PLM Portal eAF Release notes": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "hash": "724e29f1c99d32ae619212768fc3e45c536e7860a7831d76fb5e6f7ff4e5b187"
     },
     "here": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF FHIR XML - Release Notes.pdf",
