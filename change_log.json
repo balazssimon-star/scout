@@ -1817,5 +1817,10 @@
         "document": "PLM Portal eAF Release notes",
         "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
         "archived_old_pdf_path": "_archive/2026-08-04_PLM_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2026-08-05",
+        "type": "REMOVED",
+        "document": "ESMP MAH Implementation Guide"
     }
 ]
