@@ -1850,5 +1850,11 @@
         "type": "NEW",
         "document": "ESMP FAQs",
         "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf"
+    },
+    {
+        "date": "2026-08-11",
+        "type": "NEW",
+        "document": "PMS FAQ document",
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf"
     }
 ]
