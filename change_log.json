@@ -1957,5 +1957,10 @@
         "type": "NEW",
         "document": "ESMP MAH Implementation Guide",
         "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-implementation-guide-marketing-authorisation-holders_en.pdf"
+    },
+    {
+        "date": "2026-08-24",
+        "type": "REMOVED",
+        "document": "ESMP MAH Implementation Guide"
     }
 ]
