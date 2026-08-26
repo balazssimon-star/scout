@@ -1973,5 +1973,17 @@
         "date": "2026-08-25",
         "type": "REMOVED",
         "document": "PMS FAQ document"
+    },
+    {
+        "date": "2026-08-26",
+        "type": "NEW",
+        "document": "EPIC 3 changes",
+        "url": "https://www.ema.europa.eu/en/documents/other/regulatory-procedure-management-iris-roadmap_en.pdf"
+    },
+    {
+        "date": "2026-08-26",
+        "type": "NEW",
+        "document": "PMS FAQ document",
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf"
     }
 ]
