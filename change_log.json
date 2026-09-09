@@ -2123,5 +2123,15 @@
         "type": "NEW",
         "document": "Practical user guide for electronic Application Forms\r\n                                            (eAF) for human and veterinary products in the EU",
         "url": "https://esubmission.ema.europa.eu/eaf/docs/Practical%20_user%20_guide%20for%20electronic_Application_Forms%20eAF%20for%20human%20and%20veterinary%20products%20in%20the%20EU.pdf"
+    },
+    {
+        "date": "2026-09-09",
+        "type": "REMOVED",
+        "document": "ESMP FAQs"
+    },
+    {
+        "date": "2026-09-09",
+        "type": "REMOVED",
+        "document": "PMS FAQ document"
     }
 ]
