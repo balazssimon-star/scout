@@ -2498,5 +2498,22 @@
         "date": "2026-10-19",
         "type": "REMOVED",
         "document": "ESMP MAH Implementation Guide"
+    },
+    {
+        "date": "2026-10-20",
+        "type": "NEW",
+        "document": "ESMP MAH Implementation Guide",
+        "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-implementation-guide-marketing-authorisation-holders_en.pdf"
+    },
+    {
+        "date": "2026-10-20",
+        "type": "NEW",
+        "document": "eCTD 3.2.2 \u2013 EU Module 1 Implementation Guide",
+        "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1.pdf"
+    },
+    {
+        "date": "2026-10-20",
+        "type": "REMOVED",
+        "document": "PMS FAQ document"
     }
 ]
