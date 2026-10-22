@@ -3,7 +3,7 @@
         "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
         "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
     },
-    "eCTD 3.2.2 \u2013 EU Module 1 Implementation Guide": {
+    "eCTD 3.2.2 \u00e2\u0080\u0093 EU Module 1 Implementation Guide": {
         "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1.pdf",
         "hash": "ae27b9a2258ac396071234539f2bbd88491dec03521c1b12ded135bdf49b2492"
     },
@@ -11,7 +11,7 @@
         "url": "https://esubmission.ema.europa.eu/eaf/docs/Technical%20User%20Guide%20for%20eAF.pdf",
         "hash": "f495b42e736940a724663ebd09b38ac8ec2b38af122d603a08ecf8179bd51daf"
     },
-    "Practical user guide for electronic Application Forms\r\n                                            (eAF) for human and veterinary products in the EU": {
+    "Practical user guide for electronic Application Forms\n                                            (eAF) for human and veterinary products in the EU": {
         "url": "https://esubmission.ema.europa.eu/eaf/docs/Practical%20_user%20_guide%20for%20electronic_Application_Forms%20eAF%20for%20human%20and%20veterinary%20products%20in%20the%20EU.pdf",
         "hash": "c5a826e7ec52c6c05be08aa3f93027495b88454942a3e1b6e8111dc059c71ec3"
     },
@@ -31,11 +31,11 @@
         "url": "https://esubmission.ema.europa.eu/gateway/Gateway%20user%20guide%20xml%20delivery%20files.pdf",
         "hash": "131428f38fd1787e3d6694bad73ce26595d30f70be30159a5f1a6c8f02a7f548"
     },
-    "Practical user guide for electronic Application\r\n                                                Forms (eAF) for\r\n                                                human and veterinary products in the EU": {
+    "Practical user guide for electronic Application\n                                                Forms (eAF) for\n                                                human and veterinary products in the EU": {
         "url": "https://esubmission.ema.europa.eu/eaf/docs/Practical%20_user%20_guide%20for%20electronic_Application_Forms%20eAF%20for%20human%20and%20veterinary%20products%20in%20the%20EU.pdf",
         "hash": "c5a826e7ec52c6c05be08aa3f93027495b88454942a3e1b6e8111dc059c71ec3"
     },
-    "PLM\r\n                                            Portal eAF Release notes": {
+    "PLM\n                                            Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
         "hash": "6c37a9b85adb7c21ac0664dc3b269c756ba4842d88b0ab9f3546f5be02893ec3"
     },
@@ -55,27 +55,15 @@
         "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-user-guide-marketing-authorisation-holders_en.pdf",
         "hash": "824d036a0cca848a9cd3e33bd58d4a0df1351059798e3b6429621130ecb41405"
     },
-    "ESMP MAH Implementation Guide": {
-        "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-implementation-guide-marketing-authorisation-holders_en.pdf",
-        "hash": "5d6801360b360d02352667f8d0afe90833b63e38842bd60301e78c2dc0dfddeb"
-    },
-    "PMS FAQ document": {
-        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf",
-        "hash": "3779f00d9d525ef7a9d68ca95387cb444442652c1cb6aa894f444d2a3e356756"
-    },
-    "ESMP FAQs": {
-        "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf",
-        "hash": "55e6e9f9c2e7ef2b6f2f304e627a91a1f2271cb6dfe19d6cf8c0d94ac64218e9"
-    },
     "practical guidance": {
         "url": "https://esubmission.ema.europa.eu/eCTD%20NMV/docs/EU%20eCTD%20v4.0%20Practical%20Guidance%20v1.pdf",
         "hash": "b45bab3b48815b3f522f90c3b5ad51a4c0439d270fea16c2a6ad9288d849db12"
     },
-    "PLM Portal eAF Release\r\n                                            notes": {
+    "PLM Portal eAF Release\n                                            notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
         "hash": "6c37a9b85adb7c21ac0664dc3b269c756ba4842d88b0ab9f3546f5be02893ec3"
     },
-    "PLM Portal\r\n                                            eAF Q&A": {
+    "PLM Portal\n                                            eAF Q&A": {
         "url": "https://esubmission.ema.europa.eu/cessp/eAF%20Q&A%20Document%20-%20Update%20Q4%202025.pdf",
         "hash": "dcf0e8a6f5d193b891aa27ac383962b3acebcca8fb24d7beea09e62ad7ca3cb6"
     }
