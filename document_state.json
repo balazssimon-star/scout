@@ -3,6 +3,10 @@
         "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
         "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
     },
+    "eSubmission\n                                            PLM Portal eAF": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "hash": "d2099af544459fc09e49a851bbe3440e24628f182a27198a14374de4d426395d"
+    },
     "eCTD 3.2.2 \u00e2\u0080\u0093 EU Module 1 Implementation Guide": {
         "url": "https://esubmission.ema.europa.eu/eumodule1/eCTD%203.2.2%20-%20EU%20M1%20Implementation%20Guide%20v3.1.1.pdf",
         "hash": "ae27b9a2258ac396071234539f2bbd88491dec03521c1b12ded135bdf49b2492"
@@ -17,7 +21,11 @@
     },
     "eSubmission PLM Portal eAF": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
-        "hash": "6c37a9b85adb7c21ac0664dc3b269c756ba4842d88b0ab9f3546f5be02893ec3"
+        "hash": "d2099af544459fc09e49a851bbe3440e24628f182a27198a14374de4d426395d"
+    },
+    "EPIC 3 changes": {
+        "url": "https://www.ema.europa.eu/en/documents/other/regulatory-procedure-management-iris-roadmap_en.pdf",
+        "hash": "6f980b95f1c71241cdadd21df14f9ba9c41f49848380ea8f06d671557087e7bb"
     },
     "User guide to XML delivery file creation": {
         "url": "https://esubmission.ema.europa.eu/gateway/Gateway%20user%20guide%20xml%20delivery%20files.pdf",
@@ -33,11 +41,11 @@
     },
     "PLM\n                                            Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
-        "hash": "6c37a9b85adb7c21ac0664dc3b269c756ba4842d88b0ab9f3546f5be02893ec3"
+        "hash": "d2099af544459fc09e49a851bbe3440e24628f182a27198a14374de4d426395d"
     },
     "PLM Portal eAF Release notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "6c37a9b85adb7c21ac0664dc3b269c756ba4842d88b0ab9f3546f5be02893ec3"
+        "hash": "d2099af544459fc09e49a851bbe3440e24628f182a27198a14374de4d426395d"
     },
     "here": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal eAF FHIR XML - Release Notes.pdf",
@@ -51,9 +59,13 @@
         "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-user-guide-marketing-authorisation-holders_en.pdf",
         "hash": "824d036a0cca848a9cd3e33bd58d4a0df1351059798e3b6429621130ecb41405"
     },
-    "ESMP MAH Implementation Guide": {
-        "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-implementation-guide-marketing-authorisation-holders_en.pdf",
-        "hash": "5d6801360b360d02352667f8d0afe90833b63e38842bd60301e78c2dc0dfddeb"
+    "PMS FAQ document": {
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf",
+        "hash": "3779f00d9d525ef7a9d68ca95387cb444442652c1cb6aa894f444d2a3e356756"
+    },
+    "ESMP FAQs": {
+        "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf",
+        "hash": "55e6e9f9c2e7ef2b6f2f304e627a91a1f2271cb6dfe19d6cf8c0d94ac64218e9"
     },
     "practical guidance": {
         "url": "https://esubmission.ema.europa.eu/eCTD%20NMV/docs/EU%20eCTD%20v4.0%20Practical%20Guidance%20v1.pdf",
@@ -61,7 +73,7 @@
     },
     "PLM Portal eAF Release\n                                            notes": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
-        "hash": "6c37a9b85adb7c21ac0664dc3b269c756ba4842d88b0ab9f3546f5be02893ec3"
+        "hash": "d2099af544459fc09e49a851bbe3440e24628f182a27198a14374de4d426395d"
     },
     "PLM Portal\n                                            eAF Q&A": {
         "url": "https://esubmission.ema.europa.eu/cessp/eAF%20Q&A%20Document%20-%20Update%20Q4%202025.pdf",
