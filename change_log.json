@@ -2714,5 +2714,15 @@
         "document": "eSubmission PLM Portal eAF",
         "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
         "archived_old_pdf_path": "_archive/2026-10-28_eSubmission_PLM_Portal_eAF_old.pdf"
+    },
+    {
+        "date": "2026-10-29",
+        "type": "REMOVED",
+        "document": "ESMP FAQs"
+    },
+    {
+        "date": "2026-10-29",
+        "type": "REMOVED",
+        "document": "PMS FAQ document"
     }
 ]
