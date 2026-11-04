@@ -2747,5 +2747,15 @@
         "date": "2026-11-03",
         "type": "REMOVED",
         "document": "ESMP MAH Implementation Guide"
+    },
+    {
+        "date": "2026-11-04",
+        "type": "REMOVED",
+        "document": "ESMP FAQs"
+    },
+    {
+        "date": "2026-11-04",
+        "type": "REMOVED",
+        "document": "PMS FAQ document"
     }
 ]
