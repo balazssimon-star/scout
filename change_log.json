@@ -2791,5 +2791,51 @@
         "date": "2026-11-08",
         "type": "REMOVED",
         "document": "PMS FAQ document"
+    },
+    {
+        "date": "2026-11-10",
+        "type": "NEW",
+        "document": "eSubmission\n                                                PLM Portal eAF",
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf"
+    },
+    {
+        "date": "2026-11-10",
+        "type": "REMOVED",
+        "document": "EPIC 3 changes"
+    },
+    {
+        "date": "2026-11-10",
+        "type": "UPDATED",
+        "document": "PLM\n                                            Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-11-10_PLM\n____________________________________________Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2026-11-10",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release\n                                            notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-11-10_PLM_Portal_eAF_Release\n____________________________________________notes_old.pdf"
+    },
+    {
+        "date": "2026-11-10",
+        "type": "UPDATED",
+        "document": "PLM Portal eAF Release notes",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM Portal - Release Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-11-10_PLM_Portal_eAF_Release_notes_old.pdf"
+    },
+    {
+        "date": "2026-11-10",
+        "type": "UPDATED",
+        "document": "eSubmission\n                                            PLM Portal eAF",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-11-10_eSubmission\n____________________________________________PLM_Portal_eAF_old.pdf"
+    },
+    {
+        "date": "2026-11-10",
+        "type": "UPDATED",
+        "document": "eSubmission PLM Portal eAF",
+        "new_url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
+        "archived_old_pdf_path": "_archive/2026-11-10_eSubmission_PLM_Portal_eAF_old.pdf"
     }
 ]
