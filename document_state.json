@@ -27,6 +27,10 @@
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
         "hash": "9e3acfea85fa80830f846075a0d418ef999291ab550070f51324eb55ef116c78"
     },
+    "EPIC 3 changes": {
+        "url": "https://www.ema.europa.eu/en/documents/other/regulatory-procedure-management-iris-roadmap_en.pdf",
+        "hash": "6f980b95f1c71241cdadd21df14f9ba9c41f49848380ea8f06d671557087e7bb"
+    },
     "User guide to XML delivery file creation": {
         "url": "https://esubmission.ema.europa.eu/gateway/Gateway%20user%20guide%20xml%20delivery%20files.pdf",
         "hash": "131428f38fd1787e3d6694bad73ce26595d30f70be30159a5f1a6c8f02a7f548"
@@ -59,9 +63,9 @@
         "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-user-guide-marketing-authorisation-holders_en.pdf",
         "hash": "824d036a0cca848a9cd3e33bd58d4a0df1351059798e3b6429621130ecb41405"
     },
-    "ESMP MAH Implementation Guide": {
-        "url": "https://www.ema.europa.eu/en/documents/other/european-shortages-monitoring-platform-esmp-implementation-guide-marketing-authorisation-holders_en.pdf",
-        "hash": "5d6801360b360d02352667f8d0afe90833b63e38842bd60301e78c2dc0dfddeb"
+    "PMS FAQ document": {
+        "url": "https://www.ema.europa.eu/en/documents/other/product-management-service-pms-frequently-asked-questions-faqs_en.pdf",
+        "hash": "3779f00d9d525ef7a9d68ca95387cb444442652c1cb6aa894f444d2a3e356756"
     },
     "ESMP FAQs": {
         "url": "https://www.ema.europa.eu/en/documents/other/frequently-asked-questions-european-shortages-monitoring-platform-esmp_en.pdf",
