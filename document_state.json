@@ -3,6 +3,10 @@
         "url": "https://esubmission.ema.europa.eu/doc/PAM_v2.0.0.0.pdf",
         "hash": "7a52f5d155bf76d67225fb2702e4c60bda2cc94d8723106a6e1270bd614258d7"
     },
+    "timeline": {
+        "url": "https://esubmission.ema.europa.eu/cessp/PLM%20eAF%20timeline_202611.pdf",
+        "hash": "bba5d9b4c1f565215d8bcc98af492ee2a4ae3388d34055466322ae52a286bf9d"
+    },
     "eSubmission\n                                                PLM Portal eAF": {
         "url": "https://esubmission.ema.europa.eu/cessp/PLM%20Portal%20-%20Release%20Notes.pdf",
         "hash": "9e3acfea85fa80830f846075a0d418ef999291ab550070f51324eb55ef116c78"
